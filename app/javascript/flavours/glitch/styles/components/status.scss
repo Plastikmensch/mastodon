@@ -124,11 +124,11 @@
   }
 
   .status__content__spoiler-link {
-    background: lighten($ui-base-color, 30%);
+    background: $action-button-color;
 
     &:hover,
     &:focus {
-      background: lighten($ui-base-color, 33%);
+      background: lighten($action-button-color, 7%);
       text-decoration: none;
     }
   }
@@ -146,7 +146,7 @@
 .status__content__spoiler-link {
   display: inline-block;
   border-radius: 2px;
-  background: lighten($ui-base-color, 30%);
+  background: $action-button-color;
   border: 0;
   color: $inverted-text-color;
   font-weight: 700;
@@ -158,7 +158,7 @@
   vertical-align: top;
 
   &:hover {
-    background: lighten($ui-base-color, 33%);
+    background: lighten($action-button-color, 7%);
     text-decoration: none;
   }
 
@@ -711,7 +711,7 @@ a.status__display-name,
 
     &:hover,
     &:focus {
-      background: lighten($ui-base-color, 29%);
+      background: lighten($ui-base-lighter-color, 7%);
       text-decoration: none;
     }
   }
