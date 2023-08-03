@@ -41,6 +41,30 @@ RSpec.describe PublicFeed do
       expect(subject).to_not include(silenced_status.id)
     end
 
+    context 'with with_reblogs enabled' do
+      subject { described_class.new(nil, with_reblogs: true).get(20).map(&:id) }
+
+      it 'does include boosts' do
+        status = Fabricate(:status)
+        boost = Fabricate(:status, reblog_of_id: status.id)
+
+        expect(subject).to include(status.id)
+        expect(subject).to include(boost.id)
+      end
+    end
+
+    context 'with with_replies enabled' do
+      subject { described_class.new(nil, with_replies: true).get(20).map(&:id) }
+
+      it 'does include replies' do
+        status = Fabricate(:status)
+        reply = Fabricate(:status, in_reply_to_id: status.id)
+
+        expect(subject).to include(status.id)
+        expect(subject).to include(reply.id)
+      end
+    end
+
     context 'without local_only option' do
       subject { described_class.new(viewer).get(20).map(&:id) }
 
